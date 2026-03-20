@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscryption - Коллекция карт</title>
+    <link rel="stylesheet" href="veblab5style.css">
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>INSCRYPTION</h1>
+        <p>Коллекция карт</p>
+        <div class="mode-switch">
+            <button id="viewModeBtn" class="mode-btn active">Режим просмотра</button>
+            <button id="editModeBtn" class="mode-btn">Режим редактирования</button>
+        </div>
+    </div>
+
+    <div id="editPanel" class="edit-panel hidden">
+        <h3>Добавить карту</h3>
+        <div class="form-row">
+            <div class="form-group">
+                <input type="text" id="newCardName" placeholder="Название карты">
+            </div>
+            <div class="form-group">
+                <select id="newCardType">
+                    <option value="beast">Зверь (стоимость кровью)</option>
+                    <option value="bone">Скелет (стоимость костями)</option>
+                    <option value="blood">Жертва (кровь+)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="number" id="newCardCost" placeholder="Стоимость" min="0" max="8">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <input type="number" id="newCardPower" placeholder="Сила" min="0" max="20">
+            </div>
+            <div class="form-group">
+                <input type="number" id="newCardHealth" placeholder="Здоровье" min="1" max="30">
+            </div>
+            <div class="form-group">
+                <input type="text" id="newCardSigil" placeholder="Способность">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group" style="flex: 2;">
+                <textarea id="newCardDescription" placeholder="Описание карты..." rows="2"></textarea>
+            </div>
+            <div class="form-group">
+                <input type="text" id="newCardImage" placeholder="URL изображения карты">
+            </div>
+        </div>
+        <div>
+            <button id="addCardBtn" class="btn btn-add">Добавить карту</button>
+            <button id="saveToLocalBtn" class="btn btn-save">Сохранить коллекцию</button>
+        </div>
+    </div>
+
+    <div id="cardsContainer" class="cards-container"></div>
+    <footer>Лабораторная работа №5 Березовский Алексей КС-20</footer>
+</div>
+
+<script src="veblab5script.js"></script>
+</body>
+</html>
