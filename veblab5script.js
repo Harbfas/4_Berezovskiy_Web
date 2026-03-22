@@ -202,6 +202,35 @@ class BloodCard extends Card {
     }
 }
 
+function validateCardData(name, cost, power, health) {
+    if (!name || name.trim() === '') {
+        alert('Назови карту');
+        return false;
+    }
+    
+    if (isNaN(cost) || isNaN(power) || isNaN(health)) {
+        alert('Проверь статы, это должны быть числа и они не должны быть пустыми');
+        return false;
+    }
+    
+    if (cost < 0 || cost > 8) {
+        alert('Стоимость должна быть от 0 до 8');
+        return false;
+    }
+
+    if (power < 0 || power > 15) {
+        alert('Сила должна быть от 0 до 15');
+        return false;
+    }
+    
+    if (health < 1 || health > 20) {
+        alert('Здоровье должно быть от 1 до 20');
+        return false;
+    }
+    
+    return true;
+}
+
 class CardCollection {
     constructor() {
         this.cards = [];
@@ -431,12 +460,22 @@ class CardCollection {
         const cancelBtn = document.getElementById('cancelModalBtn');
         
         saveBtn.onclick = () => {
+            const name = document.getElementById('editName').value;
+            const cost = parseInt(document.getElementById('editCost').value);
+            const power = parseInt(document.getElementById('editPower').value);
+            const health = parseInt(document.getElementById('editHealth').value);
+
+            if (!validateCardData(name, cost, power, health)) {
+                return;
+            }
+    
+
             const newData = {
-                name: document.getElementById('editName').value,
-                cost: parseInt(document.getElementById('editCost').value),
+                name: name,
+                cost: cost,
                 description: document.getElementById('editDesc').value,
-                power: parseInt(document.getElementById('editPower').value),
-                health: parseInt(document.getElementById('editHealth').value),
+                power: power,
+                health: health,
                 special: document.getElementById('editSpecial').value,
                 imageUrl: document.getElementById('editImage').value
             };
@@ -488,8 +527,7 @@ document.getElementById('addCardBtn').addEventListener('click', () => {
     const description = document.getElementById('newCardDescription').value;
     const imageUrl = document.getElementById('newCardImage').value;
     
-    if (!name) {
-        alert('Введите название карты');
+    if (!validateCardData(name, cost, power, health)) {
         return;
     }
     
@@ -503,14 +541,14 @@ document.getElementById('addCardBtn').addEventListener('click', () => {
     }
     
     collection.addCard(newCard);
-    
+    alert('Карта добавлена!');
     document.getElementById('newCardName').value = '';
     document.getElementById('newCardSigil').value = '';
     document.getElementById('newCardDescription').value = '';
     document.getElementById('newCardImage').value = '';
-    document.getElementById('newCardCost').value = '1';
-    document.getElementById('newCardPower').value = '2';
-    document.getElementById('newCardHealth').value = '3';
+    document.getElementById('newCardCost').value = '';
+    document.getElementById('newCardPower').value = '';
+    document.getElementById('newCardHealth').value = '';
 });
 
 document.getElementById('saveToLocalBtn').addEventListener('click', () => {
