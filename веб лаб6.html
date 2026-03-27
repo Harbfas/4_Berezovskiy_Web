@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Погодный форум, обсуждения и погода</title>
+    <link rel="stylesheet" href="veblab6.css">
+</head>
+<body>
+
+<div class="app">
+    <header class="header">
+        <div class="container header-container">
+            <h1 class="logo">Погодный форум</h1>
+            <nav class="nav">
+                <button class="nav-btn active" data-tab="forum">Форум</button>
+                <button class="nav-btn" data-tab="weather-page">Погода</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="weather-card" id="weatherWidget">
+                <div class="weather-header">
+                    <h2>Погода сегодня</h2>
+                    <div class="weather-controls">
+                        <input type="text" id="cityInput" placeholder="Введите город" value="Moscow">
+                        <button id="getWeatherBtn" class="btn btn-primary">Узнать погоду</button>
+                    </div>
+                </div>
+                <div id="weatherContent" class="weather-content">
+                    <div class="loading-spinner"></div>
+                    <p>Загрузка погоды...</p>
+                </div>
+            </div>
+
+            <div id="forumTab" class="tab-content active">
+                <div class="forum-header">
+                    <h2>Обсуждения</h2>
+                    <button id="createPostBtn" class="btn btn-success">Создать пост</button>
+                </div>
+                <div id="postsList" class="posts-list">
+                    <div class="loading-spinner"></div>
+                    <p>Загрузка постов...</p>
+                </div>
+            </div>
+
+            <div id="weatherPageTab" class="tab-content">
+                <div class="weather-details-card">
+                    <h2>Подробный прогноз</h2>
+                    <div id="detailedWeather" class="detailed-weather">
+                        <p>Выберите город</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="postModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3 id="modalTitle">Создать пост</h3>
+            <label for="postTitle">Заголовок</label>
+            <input type="text" id="postTitle" placeholder="Введите заголовок">
+            <label for="postBody">Содержание</label>
+            <textarea id="postBody" rows="5" placeholder="Введите текст поста"></textarea>
+            <div class="modal-actions">
+                <button id="closeModalBtn" class="btn btn-secondary">Отмена</button>
+                <button id="savePostBtn" class="btn btn-primary">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="commentsModal" class="modal" style="display: none;">
+        <div class="modal-content modal-large">
+            <h3>Комментарии</h3>
+            <div id="commentsList" class="comments-list">
+                <div class="loading-spinner"></div>
+            </div>
+            <div class="add-comment">
+                <h4>Добавить комментарий</h4>
+                <input type="text" id="commentAuthor" placeholder="Ваше имя" value="Гость">
+                <textarea id="commentBody" rows="3" placeholder="Ваш комментарий"></textarea>
+                <div class="modal-actions">
+                    <button id="closeCommentsBtn" class="btn btn-secondary">Закрыть</button>
+                    <button id="addCommentBtn" class="btn btn-primary">Отправить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <p>Лабораторная работа №6 Березовский А. А. КС-20</p>
+        </div>
+    </footer>
+
+    <div id="toastContainer"></div>
+</div>
+
+<script src="veblab6.js"></script>
+</body>
+</html>
